@@ -21,7 +21,7 @@
     "editor.accessibilitySupport": "off",
     "explorer.confirmDragAndDrop": false,
     "terminal.integrated.fontSize": 14,
-    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "terminal.integrated.fontFamily": "JetBrains Mono",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     },
@@ -36,7 +36,7 @@
     "update.mode": "start",
     "terminal.integrated.gpuAcceleration": "off",
     "terminal.integrated.defaultProfile.osx": "fish",
-    "workbench.colorTheme": "Min Dark",
+    "workbench.colorTheme": "Omni",
     "workbench.editor.empty.hint": "hidden",
     "window.menuBarVisibility": "toggle",
     "workbench.activityBar.location": "hidden",
@@ -77,5 +77,8 @@
     "editor.stickyScroll.enabled": false,
     "accessibility.signals.noInlayHints": {
       "sound": "off"
+    },
+    "files.associations": {
+      "arvore.h": "c"
     },
   }

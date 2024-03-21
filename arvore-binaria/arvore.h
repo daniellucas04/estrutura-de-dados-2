@@ -83,6 +83,69 @@ int insertTree(BinaryTree *tree, int value){
     return 1;
 }
 
+/**
+ * removeTree: Remove um valor da árvore informada
+ * 
+ * @param BinaryTree* tree = Endereço da árvore
+ * @param int value = Valor a ser removido
+ * @return bool
+*/
+int removeTree(BinaryTree *tree, int value) {
+    // Verifica se a árvore existe
+    if(tree == NULL || tree->quantity == 0)
+        return 0;
+
+    // Recebe a raiz
+    Node *actual = tree->root;
+    Node *parent = NULL;
+    // Percorre a árvore em busca do valor informado
+    while(value != actual->value && actual != NULL) {
+        parent = actual;
+        // Se o valor for menor que o nó atual vai para esquerda
+        if(value < actual->value)
+            actual = actual->left;
+        else // Senão, vai para direita
+            actual = actual->right;
+    }
+
+    // Se o atual não existir, o valor não foi encontrado
+    if(actual == NULL)
+        return 0;
+
+    if(actual->left == NULL && actual->right == NULL) {
+        // Remoção do nó folha
+        if(parent == NULL)
+            tree->root = NULL;
+        else if(value < parent->value)
+            parent->left = NULL;
+        else
+            parent->right = NULL;
+
+    } else if(actual->left == NULL && actual->right != NULL) {
+        // Remoção de nós apenas com filho à direita
+        if(parent == NULL)
+            tree->root = actual->right;
+        else if(value < parent->value)
+            parent->left = actual->right;
+        else
+            parent->right = actual->right;
+    } else if(actual->left != NULL && actual->right == NULL) {
+        // Remoção de nós apenas com filho à esquerda
+        if(parent == NULL)
+            tree->root = actual->left;
+        else if(value < parent->value)
+            parent->left = actual->left;
+        else
+            parent->right = actual->left;
+    } else {
+        // Remoção de nó com ambos os filhos
+    }
+
+    free(actual);
+    tree->quantity -= 1;
+    return 1;
+}
+
 void TreePreOrder(Node *node) {
     if(node != NULL){
         printf(" %d ", node->value);
@@ -91,20 +154,18 @@ void TreePreOrder(Node *node) {
     }
 }
 
+void TreeInOrder(Node *node) {
+    if(node != NULL){
+        TreeInOrder(node->left);
+        printf(" %d ", node->value);
+        TreeInOrder(node->right);
+    }
+}
 
 void TreePosOrder(Node *node) {
     if(node != NULL){
         TreePosOrder(node->left);
         TreePosOrder(node->right);
         printf(" %d ", node->value);
-    }
-}
-
-
-void TreeOnOrder(Node *node) {
-    if(node != NULL){
-        TreeOnOrder(node->left);
-        printf(" %d ", node->value);
-        TreeOnOrder(node->right);
     }
 }

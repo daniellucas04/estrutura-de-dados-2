@@ -5,30 +5,32 @@
 int main(void){
     // Aloca a Árvore Binária
     BinaryTree *tree = newTree();
-    int arr[9] = {5, 2, 8, 3, 7, 1, 4, 6, 9}, i;
+    int value = 1;
 
-    // while(value != 0) {
-    //     system("cls");
-    //     printf("Tamanho: %d\n\n", tree->quantity);
+    while(value != 0) {
+        system("cls");
+        printf("Pre-ordem: ");
+        TreePreOrder(tree->root);
         
-    //     scanf("%d", &value);
-    //     insertTree(tree, value);
-    // }
+        printf("\n\nEm-ordem: ");
+        TreeInOrder(tree->root);
+        
+        printf("\n\nPos-ordem: ");
+        TreePosOrder(tree->root);
 
-    for(i=0; i<9; i++)
-        insertTree(tree, arr[i]);
+        printf("\n\nTamanho: %d\n\n", tree->quantity);
 
-    printf("Pre-ordem: ");
-    TreePreOrder(tree->root);
-    printf("\n\n");
-    
-    printf("Em-ordem: ");
-    TreeOnOrder(tree->root);
-    printf("\n\n");
-    
-    printf("Pos-ordem: ");
-    TreePosOrder(tree->root);
-    printf("\n\n");
+        printf(">> ");
+        scanf("%d", &value);
+        if(value == 0) 
+            break;
+
+        if(value > 0) 
+            insertTree(tree, value);
+        else if(value < 0)
+            removeTree(tree, -value);
+    }
+
 
     return 0;
 }
