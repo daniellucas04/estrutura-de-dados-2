@@ -18,6 +18,12 @@ int main(void){
         printf("\n\nPos-ordem: ");
         TreePosOrder(tree->root);
 
+        printf("\n\nDecrescente: ");
+        TreeDescending(tree->root);
+
+        printf("\n\nAltura: ");
+        TreeHeight(tree);
+
         printf("\n\nTamanho: %d\n\n", tree->quantity);
 
         printf(">> ");
