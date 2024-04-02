@@ -168,6 +168,19 @@ int removeTree(BinaryTree *tree, int value) {
     return 1;
 }
 
+int TreeHeight(Node *node) {
+    if(node == NULL)
+        return -1;
+    else {
+        int left = TreeHeight(node->left);
+        int right = TreeHeight(node->right);
+        if(left > right)
+            return left + 1;
+        else
+            return right + 1;
+    }
+}
+
 void TreePreOrder(Node *node) {
     if(node != NULL){
         printf(" %d ", node->value);

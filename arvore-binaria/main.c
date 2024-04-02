@@ -21,9 +21,6 @@ int main(void){
         printf("\n\nDecrescente: ");
         TreeDescending(tree->root);
 
-        printf("\n\nAltura: ");
-        TreeHeight(tree);
-
         printf("\n\nTamanho: %d\n\n", tree->quantity);
 
         printf(">> ");
@@ -37,6 +34,8 @@ int main(void){
             removeTree(tree, -value);
     }
 
+    printf("\n\nAltura da arvore: ");
+    printf("%d", TreeHeight(tree->root));
 
     return 0;
 }
