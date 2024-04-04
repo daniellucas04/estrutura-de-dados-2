@@ -2,9 +2,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int leftHeight = 0;
-int rightHeight = 0;
-
 /**
  * Node: Estrutura de nó da árvore
  * @param int value = Valor do nó
@@ -170,7 +167,7 @@ int removeTree(BinaryTree *tree, int value) {
 
 int TreeHeight(Node *node) {
     if(node == NULL)
-        return -1;
+        return 0;
     else {
         int left = TreeHeight(node->left);
         int right = TreeHeight(node->right);
@@ -179,6 +176,28 @@ int TreeHeight(Node *node) {
         else
             return right + 1;
     }
+}
+
+void TreeLeafNode(Node *node) {
+    if(node != NULL) {
+        TreeLeafNode(node->left);
+        if(node->left == NULL && node->right == NULL)
+            printf("%d ", node->value);   
+        TreeLeafNode(node->right);
+    }
+}
+
+int ValidBinaryTree(Node *node) {
+     if(node == NULL)
+        return 1;
+    
+    if(node->left != NULL && node->left->value >= node->value)
+        return 0;
+
+    if(node->right != NULL && node->right->value < node->value)
+        return 0;
+
+    return ValidBinaryTree(node->left) && ValidBinaryTree(node->right);
 }
 
 void TreePreOrder(Node *node) {
